@@ -1,27 +1,9 @@
-import { useEffect, useState } from "react";
+import { usePostsContext } from "../../contexts/ProjectsContext";
 import { Card } from "../Card";
 import styles from "./index.module.css";
 
-type PostType = {
-  userId: number;
-  title: string;
-  body: string;
-  id: number;
-};
-
 export function Feed() {
-  const [posts, setPosts] = useState<PostType[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.json())
-      .then((json) => {
-        setPosts(json);
-        setIsLoading(false);
-      });
-  }, []);
+  const { posts, isPostsLoading } = usePostsContext();
 
   return (
     <div className={styles.wrapper}>
@@ -35,7 +17,8 @@ export function Feed() {
             body={post.body}
             title={post.title}
             userId={post.userId}
-            isLoading={isLoading}
+            isLoading={isPostsLoading}
+            postId={post.id}
             key={post.id}
           />
         ))}

@@ -1,0 +1,43 @@
+.wrapper{
+    width: 554px;
+    min-height: 100vh;
+    height: 100%;
+
+    border-left: 1px solid #D2D2D2;
+    border-right: 1px solid #D2D2D2;
+
+    position: sticky;
+    top: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    z-index: 99999;
+
+    position: sticky;
+    top: 0;
+    background-color: #F2f2f2;
+
+    padding: 24px;
+    border-bottom: 1px solid #D2D2D2;
+}
+
+.header > h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.header > button {
+    background: none;
+    border: none;
+
+    height: 20px;
+}
+
+.header > button > svg {
+    height: 20px;
+    width: 20px;
+}

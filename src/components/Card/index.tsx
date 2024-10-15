@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../contexts/UsersContext";
 import styles from "./index.module.css";
 
@@ -6,13 +7,25 @@ type PostTypeProps = {
   title: string;
   body: string;
   isLoading: boolean;
+  postId: number;
 };
 
-export function Card({ body, title, userId, isLoading }: PostTypeProps) {
+export function Card({
+  body,
+  title,
+  userId,
+  isLoading,
+  postId,
+}: PostTypeProps) {
   const { users, isUsersLoading } = useUserContext();
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate(`/post/${postId}`);
+  }
 
   return (
-    <div className={styles.card}>
+    <div onClick={handleClick} className={styles.card} role="button">
       {!isLoading && !isUsersLoading ? (
         <>
           <div className={styles.user_info}>
